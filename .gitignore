@@ -112,3 +112,8 @@ exports
 dist
 build
 .strapi-updater.json
+
+###########################
+#Docker
+###########################
+Docker-compose.yml
