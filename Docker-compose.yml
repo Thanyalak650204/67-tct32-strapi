@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  app:
+    #build: .
+    image: thanyalak/app:1.0.0
+    container_name: my-app 
+    ports:
+      - ${APP_PORTS}
+    environment:
+      - DATABASE_CLIENT=${DATABASE_CLIENT}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_SSL=${DATABASE_SSL}
+    networks:
+      - woon
+  db:
+    image: postgres:latest
+    container_name: my-db
+    ports:
+      - ${DB_PORTS}
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - woon
+networks:
+  woon:
