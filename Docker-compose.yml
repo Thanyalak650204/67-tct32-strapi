@@ -6,27 +6,29 @@ services:
     image: thanyalak/app:1.0.0
     container_name: my-app 
     ports:
-      - ${APP_PORTS}
+      - ${APP_PORTS}:1337
     environment:
       - DATABASE_CLIENT=${DATABASE_CLIENT}
       - DATABASE_HOST=db
-      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_PORT=${DATABASE_PORT}:5432
       - DATABASE_NAME=${DATABASE_NAME}
       - DATABASE_USERNAME=${DATABASE_USERNAME}
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_SSL=${DATABASE_SSL}
     networks:
       - woon
+    restart: always
   db:
     image: postgres:latest
     container_name: my-db
     ports:
-      - ${DB_PORTS}
+      - ${DB_PORTS}:5432
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
     networks:
       - woon
+    restart: always
 networks:
   woon:
