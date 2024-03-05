@@ -896,7 +896,6 @@ export interface ApiStudentStudent extends Schema.CollectionType {
         minLength: 10;
         maxLength: 10;
       }>;
-    mobileHash: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
